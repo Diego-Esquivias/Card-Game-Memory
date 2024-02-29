@@ -1,10 +1,9 @@
-var array = [] // Make this an array of emojis
+var array = ['😂', '😂', '😊', '😊', '😜', '😜', '☹️', '☹️', '😴', '😴', '😰', '😰', '🥳', '🥳', '🤯', '🤯', '🤐', '🤐', '☠️', '☠️', '🥶', '🥶', '🤑', '🤑', '😎', '😎', '😀', '😀', '👻', '👻']
 
-window.onload = resetBoard(array)
-
-const resetBoard = (arr) => {
-
+for (let i = 0; i < array.length; i++) {
+  
 }
+
 
 const flipCard = (id) => {
   var card = document.getElementById(id);
