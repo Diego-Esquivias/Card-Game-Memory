@@ -1,3 +1,7 @@
+body {
+    background-color: black;
+}
+
 .card-container {
     perspective: 1000px;
     margin: 1rem;
@@ -27,15 +31,17 @@
 }
 
 .card-front {
-    background-color: #f1f1f1;
-    color: black;
+    background-color: rgb(8, 127, 254);
+    color: white;
     z-index: 2;
+    border-radius: 25px;
 }
 
 .card-back {
     background-color: #333;
     color: white;
     transform: rotateY(180deg);
+    border-radius: 25px;
 }
 
 #button {
