@@ -40,7 +40,7 @@ function stopTimer() {
 // Every second the timer on the page will update 
 function updateTimerDisplay() {
   const timerDisplay = document.getElementById("timer");
-  timerDisplay.textContent = formatTime(timeElapsed);
+  timerDisplay.textContent = "Timer: " + formatTime(timeElapsed);
 }
 
 // Converts the time into minutes every 60 seconds

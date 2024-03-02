@@ -14,8 +14,8 @@ body {
 }
 
 .card {
-    width: 150px;
-    height: 200px;
+    width: 120px;
+    height: 160px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.5s;
@@ -37,7 +37,7 @@ body {
 
 .card-front {
     background-image: url(./Images/cardFront.jpg);
-    background-size: 150px 200px;
+    background-size: 120px 160px;
     border: 2px solid rgb(173, 173, 173);
     z-index: 2;
 }
