@@ -1,23 +1,27 @@
+// Makes an array of emojis
 var emojiArray = ['😂', '😂', '😊', '😊', '😜', '😜', '☹️', '☹️', '😴', '😴', '😰', '😰', '🥳', '🥳', '🤯', '🤯', '🤐', '🤐', '☠️', '☠️', '🥶', '🥶', '🤑', '🤑', '😎', '😎', '😀', '😀', '👻', '👻']
 
+// Makes a lot of variables that'll be used later on
 var cardsFlipped = 0
-
 var card1text
-
 var secondCard
-
 var card2text
-
+var score = 1000
 var checkingMatch = false
-
 var matches = 0
-
 var gameIsOver = false
-
 let timeElapsed = 0
-
 let timerInterval = null
 
+// Shuffles the array when the pages reloads so that the board in the page is always different
+shuffleArray(emojiArray)
+
+// Adds the emoji's to the back of the cards on the page
+for (let i = 0; i < emojiArray.length; i++) {
+  document.getElementById(String("h" + i)).innerHTML = emojiArray[i]
+}
+
+// This starts the timer
 function startTimer() {
   if (timerInterval === null) {
     timerInterval = setInterval(() => {
@@ -27,36 +31,26 @@ function startTimer() {
   }
 }
 
+// This will be used to stop the timer when someone wins
 function stopTimer() {
   clearInterval(timerInterval);
   timerInterval = null;
 }
 
-function resetTimer() {
-  stopTimer();
-  timeElapsed = 0;
-  updateTimerDisplay();
-}
-
+// Every second the timer on the page will update 
 function updateTimerDisplay() {
   const timerDisplay = document.getElementById("timer");
   timerDisplay.textContent = formatTime(timeElapsed);
 }
 
+// Converts the time into minutes every 60 seconds
 function formatTime(timeInSeconds) {
   const minutes = Math.floor(timeInSeconds / 60);
   const seconds = timeInSeconds % 60;
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-
-
-shuffleArray(emojiArray)
-
-for (let i = 0; i < emojiArray.length; i++) {
-  document.getElementById(String("h" + i)).innerHTML = emojiArray[i]
-}
-
+// This is used to shuffle the array of emoji's
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -97,6 +91,7 @@ const flipCard = (id) => {
   // When 2 cards are clicked, it checks if the pair are a match and keeps them flipped while making it unclickable
   if ((card1text === card2text) && (cardsFlipped == 2)) {
     console.log("Match!")
+    console.log(timeElapsed)
     document.getElementById(secondCard).style.pointerEvents = "none"
     firstCard.style.pointerEvents = "none"
     // Reset cardsFlipped to 0, indicating that no cards are flipped
@@ -119,12 +114,16 @@ const flipCard = (id) => {
     }, 1000); // 1000 milliseconds = 1 second
   }
 
+  // Checks to see if every match was found, if yes then update gameIsOver
   if (matches == 15) {
     gameIsOver = true
   }
 
+  // If gameIsOver is true, stop time and update score based on time taken
   if (gameIsOver) {
     stopTimer();
+    score -= timeElapsed
+    document.getElementById('score').innerHTML = "Score: " + score
   }
   
 }

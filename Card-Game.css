@@ -1,5 +1,10 @@
 body {
-    background-color: black;
+    background-image: url(./Images/Abyss.jpg);
+    background-size: cover;
+}
+
+#title h1 {
+    color: white;
 }
 
 .card-container {
@@ -9,7 +14,7 @@ body {
 }
 
 .card {
-    width: 120px;
+    width: 150px;
     height: 200px;
     position: relative;
     transform-style: preserve-3d;
@@ -31,17 +36,17 @@ body {
 }
 
 .card-front {
-    background-color: rgb(8, 127, 254);
-    color: white;
+    background-image: url(./Images/cardFront.jpg);
+    background-size: 150px 200px;
+    border: 2px solid rgb(173, 173, 173);
     z-index: 2;
-    border-radius: 25px;
 }
 
 .card-back {
-    background-color: #333;
+    background-color: rgb(29, 29, 29);
     color: white;
     transform: rotateY(180deg);
-    border-radius: 25px;
+    border: 2px solid rgb(173, 173, 173);
 }
 
 #button {
